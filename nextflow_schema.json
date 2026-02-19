@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/PaSTa//nextflow_schema.json",
+  "title": "PaSTa pipeline parameters",
+  "description": "Pan-spatial transcriptomics analysis pipeline",
+  "type": "object",
+  "properties": {
+    "images": {
+      "type": "string"
+    },
+    "image_stack": {
+      "type": "string"
+    },
+    "chs_to_call_peaks": {
+      "type": "array",
+      "description": "number of channels",
+      "help_text": "",
+      "items": {
+        "type": "number"
+      }
+    },
+    "codebook": {
+      "type": "string",
+      "description": "file with codes"
+    },
+    "segmentation_method": {
+      "type": "string",
+      "default": "CELLPOSE"
+    },
+    "out_dir": {
+      "type": "string",
+      "default": "./output"
+    },
+    "report_dir": {
+      "type": "string",
+      "default": "./reports"
+    }
+  },
+  "required": ["image_stack", "images", "codebook"]
+}
