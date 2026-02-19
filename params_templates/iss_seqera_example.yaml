@@ -1,0 +1,30 @@
+image_stack:
+- - id: test_sample
+  - s3://ddls-pipeline-test/all_rounds.ome.tiff
+cell_diameters:
+- 30
+chs_to_call_peaks:
+- 1
+- 2
+- 3
+- 4 
+codebook:
+- - id: test_sample
+  - s3://ddls-pipeline-test/codebook_expanded.csv
+  - s3://ddls-pipeline-test/dummy.txt
+segmentation_method: CELLPOSE
+out_dir: /cephyr/users/garciada/Alvis/ddls_seqera/output
+n_cycle_int:
+- - id: test_sample
+  - 6
+segmentation_channel: 0
+extra_codebook:
+- - id: test_sample
+  - s3://ddls-pipeline-test/extra_codebook_expanded.csv
+  - s3://ddls-pipeline-test/dummy.txt
+extra_n_cycle_int:
+- - id: test_sample
+  - 1
+extra_chs_to_call_peaks:
+- 31
+- 32
