@@ -47,14 +47,18 @@ process QUARTONOTEBOOK {
     def yaml_content = yamlBuilder.toString().tokenize('\n').join("\n    ")
     """
     # Dump parameters to yaml file
-    cat <<- END_YAML_PARAMS > params.yml
-    ${yaml_content}
-    END_YAML_PARAMS
+    cat <<-END_YAML_PARAMS > params.yml
+${yaml_content}
+END_YAML_PARAMS
 
     # Create output directory
     mkdir "${notebook_parameters.artifact_dir}"
 
     # Set environment variables needed for Quarto rendering
+    mkdir -p tmpdir
+    export TMPDIR="\${PWD}/tmpdir"
+    export DENO_DIR="\${PWD}/.deno"
+    mkdir -p "\${DENO_DIR}"
     export XDG_CACHE_HOME="./.xdg_cache_home"
     export XDG_DATA_HOME="./.xdg_data_home"
 
